@@ -84,7 +84,7 @@ internal abstract class StateHistory
 
 internal class JsonStateHistory : StateHistory
 {
-    [Column("json_state", TypeName = "jsonb")]
+    [Column("json_state", TypeName = "text")]
     public string JsonState { get; set; }
 }
 

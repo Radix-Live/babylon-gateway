@@ -257,7 +257,7 @@ INNER JOIN LATERAL (
             await writer.WriteAsync(e.FromStateVersion, NpgsqlDbType.Bigint, token);
             await writer.WriteAsync(e.EntityId, NpgsqlDbType.Bigint, token);
             await writer.WriteAsync(e.MethodName, NpgsqlDbType.Text, token);
-            await writer.WriteAsync(e.RoyaltyAmount, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(e.RoyaltyAmount, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.IsLocked, NpgsqlDbType.Boolean, token);
         });
 

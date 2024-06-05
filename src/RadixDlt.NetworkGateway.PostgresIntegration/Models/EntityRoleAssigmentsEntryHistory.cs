@@ -88,7 +88,7 @@ internal class EntityRoleAssignmentsEntryHistory
     [Column("key_module")]
     public ModuleId KeyModule { get; set; }
 
-    [Column("role_assignments", TypeName = "jsonb")]
+    [Column("role_assignments", TypeName = "text")]
     public string? RoleAssignments { get; set; }
 
     [MemberNotNullWhen(false, nameof(RoleAssignments))]

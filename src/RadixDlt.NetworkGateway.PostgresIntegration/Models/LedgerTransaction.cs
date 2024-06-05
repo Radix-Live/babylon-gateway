@@ -135,31 +135,31 @@ internal abstract class LedgerTransaction
     [Column("receipt_status")]
     public LedgerTransactionStatus ReceiptStatus { get; set; }
 
-    [Column("receipt_fee_summary", TypeName = "jsonb")]
+    [Column("receipt_fee_summary", TypeName = "text")]
     public string ReceiptFeeSummary { get; set; }
 
-    [Column("receipt_state_updates", TypeName = "jsonb")]
+    [Column("receipt_state_updates", TypeName = "text")]
     public string ReceiptStateUpdates { get; set; }
 
-    [Column("receipt_costing_parameters", TypeName = "jsonb")]
+    [Column("receipt_costing_parameters", TypeName = "text")]
     public string ReceiptCostingParameters { get; set; }
 
-    [Column("receipt_fee_source", TypeName = "jsonb")]
+    [Column("receipt_fee_source", TypeName = "text")]
     public string? ReceiptFeeSource { get; set; }
 
-    [Column("receipt_fee_destination", TypeName = "jsonb")]
+    [Column("receipt_fee_destination", TypeName = "text")]
     public string? ReceiptFeeDestination { get; set; }
 
-    [Column("receipt_next_epoch", TypeName = "jsonb")]
+    [Column("receipt_next_epoch", TypeName = "text")]
     public string? ReceiptNextEpoch { get; set; }
 
-    [Column("receipt_output", TypeName = "jsonb")]
+    [Column("receipt_output", TypeName = "text")]
     public string? ReceiptOutput { get; set; }
 
     [Column("receipt_error_message")]
     public string? ReceiptErrorMessage { get; set; }
 
-    [Column("receipt_event_emitters", TypeName = "jsonb[]")]
+    [Column("receipt_event_emitters", TypeName = "text[]")]
     public string[] ReceiptEventEmitters { get; set; }
 
     [Column("receipt_event_names", TypeName = "text[]")]
@@ -180,7 +180,7 @@ internal abstract class LedgerTransaction
     [Column("receipt_event_sbor_type_kinds")]
     public SborTypeKind[] ReceiptEventSborTypeKinds { get; set; }
 
-    [Column("balance_changes", TypeName = "jsonb")]
+    [Column("balance_changes", TypeName = "text")]
     public string? BalanceChanges { get; set; }
 
     [Column("transaction_tree_hash")]
@@ -224,7 +224,7 @@ internal class UserLedgerTransaction : LedgerTransaction
     [Column("signed_intent_hash")]
     public string SignedIntentHash { get; set; }
 
-    [Column("message", TypeName = "jsonb")]
+    [Column("message", TypeName = "text")]
     public string? Message { get; set; }
 
     /// <summary>

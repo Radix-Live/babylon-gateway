@@ -83,7 +83,7 @@ public class ComponentMethodRoyaltyEntryHistory
     [Column("method_name")]
     public string MethodName { get; set; }
 
-    [Column("royalty_amount", TypeName = "jsonb")]
+    [Column("royalty_amount", TypeName = "text")]
     public string? RoyaltyAmount { get; set; }
 
     [Column("is_locked")]

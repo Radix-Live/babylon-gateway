@@ -286,7 +286,7 @@ INNER JOIN LATERAL (
             await writer.WriteAsync(e.Id, NpgsqlDbType.Bigint, token);
             await writer.WriteAsync(e.FromStateVersion, NpgsqlDbType.Bigint, token);
             await writer.WriteAsync(e.EntityId, NpgsqlDbType.Bigint, token);
-            await writer.WriteAsync(e.RoleAssignments, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(e.RoleAssignments, NpgsqlDbType.Text, token);
         });
 
     private Task<int> CopyEntityRoleAssignmentsRulesEntryHistory() => _context.WriteHelper.Copy(
@@ -299,7 +299,7 @@ INNER JOIN LATERAL (
             await writer.WriteAsync(e.EntityId, NpgsqlDbType.Bigint, token);
             await writer.WriteAsync(e.KeyRole, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.KeyModule, "module_id", token);
-            await writer.WriteAsync(e.RoleAssignments, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(e.RoleAssignments, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.IsDeleted, NpgsqlDbType.Boolean, token);
         });
 

@@ -312,11 +312,11 @@ INNER JOIN LATERAL (
             await writer.WriteAsync(e.PackageEntityId, NpgsqlDbType.Bigint, token);
             await writer.WriteAsync(e.Name, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.Version, NpgsqlDbType.Text, token);
-            await writer.WriteAsync(e.Definition, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(e.Definition, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.DependantEntityIds?.ToArray(), NpgsqlDbType.Array | NpgsqlDbType.Bigint, token);
-            await writer.WriteAsync(e.AuthTemplate, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(e.AuthTemplate, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.AuthTemplateIsLocked, NpgsqlDbType.Boolean, token);
-            await writer.WriteAsync(e.RoyaltyConfig, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(e.RoyaltyConfig, NpgsqlDbType.Text, token);
             await writer.WriteAsync(e.RoyaltyConfigIsLocked, NpgsqlDbType.Boolean, token);
         });
 

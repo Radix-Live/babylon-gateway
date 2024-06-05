@@ -274,18 +274,18 @@ internal class WriteHelper : IWriteHelper
             await writer.WriteAsync(lt.RoundTimestamp, NpgsqlDbType.TimestampTz, token);
             await writer.WriteAsync(lt.CreatedTimestamp, NpgsqlDbType.TimestampTz, token);
             await writer.WriteAsync(lt.NormalizedRoundTimestamp, NpgsqlDbType.TimestampTz, token);
-            await writer.WriteAsync(lt.BalanceChanges, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(lt.BalanceChanges, NpgsqlDbType.Text, token);
 
-            await writer.WriteAsync(lt.EngineReceipt.StateUpdates, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(lt.EngineReceipt.StateUpdates, NpgsqlDbType.Text, token);
             await writer.WriteAsync(lt.EngineReceipt.Status, "ledger_transaction_status", token);
-            await writer.WriteAsync(lt.EngineReceipt.FeeSummary, NpgsqlDbType.Jsonb, token);
-            await writer.WriteAsync(lt.EngineReceipt.FeeSource, NpgsqlDbType.Jsonb, token);
-            await writer.WriteAsync(lt.EngineReceipt.FeeDestination, NpgsqlDbType.Jsonb, token);
-            await writer.WriteAsync(lt.EngineReceipt.CostingParameters, NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(lt.EngineReceipt.FeeSummary, NpgsqlDbType.Text, token);
+            await writer.WriteAsync(lt.EngineReceipt.FeeSource, NpgsqlDbType.Text, token);
+            await writer.WriteAsync(lt.EngineReceipt.FeeDestination, NpgsqlDbType.Text, token);
+            await writer.WriteAsync(lt.EngineReceipt.CostingParameters, NpgsqlDbType.Text, token);
             await writer.WriteAsync(lt.EngineReceipt.ErrorMessage, NpgsqlDbType.Text, token);
-            await writer.WriteAsync(lt.EngineReceipt.Output, NpgsqlDbType.Jsonb, token);
-            await writer.WriteAsync(lt.EngineReceipt.NextEpoch, NpgsqlDbType.Jsonb, token);
-            await writer.WriteAsync(lt.EngineReceipt.Events.Emitters, NpgsqlDbType.Array | NpgsqlDbType.Jsonb, token);
+            await writer.WriteAsync(lt.EngineReceipt.Output, NpgsqlDbType.Text, token);
+            await writer.WriteAsync(lt.EngineReceipt.NextEpoch, NpgsqlDbType.Text, token);
+            await writer.WriteAsync(lt.EngineReceipt.Events.Emitters, NpgsqlDbType.Array | NpgsqlDbType.Text, token);
             await writer.WriteAsync(lt.EngineReceipt.Events.Names, NpgsqlDbType.Array | NpgsqlDbType.Text, token);
             await writer.WriteAsync(lt.EngineReceipt.Events.Sbors, NpgsqlDbType.Array | NpgsqlDbType.Bytea, token);
             await writer.WriteAsync(lt.EngineReceipt.Events.SchemaEntityIds, NpgsqlDbType.Array | NpgsqlDbType.Bigint, token);
@@ -311,7 +311,7 @@ internal class WriteHelper : IWriteHelper
                     await writer.WriteAsync(ult.PayloadHash, NpgsqlDbType.Text, token);
                     await writer.WriteAsync(ult.IntentHash, NpgsqlDbType.Text, token);
                     await writer.WriteAsync(ult.SignedIntentHash, NpgsqlDbType.Text, token);
-                    await writer.WriteAsync(ult.Message, NpgsqlDbType.Jsonb, token);
+                    await writer.WriteAsync(ult.Message, NpgsqlDbType.Text, token);
                     await writer.WriteAsync(ult.RawPayload, NpgsqlDbType.Bytea, token);
                     await writer.WriteAsync(ult.ManifestInstructions, NpgsqlDbType.Text, token);
                     await writer.WriteAsync(ult.ManifestClasses, "ledger_transaction_manifest_class[]", token);

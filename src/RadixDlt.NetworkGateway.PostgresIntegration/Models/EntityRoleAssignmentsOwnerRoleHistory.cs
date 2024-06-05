@@ -80,6 +80,6 @@ internal class EntityRoleAssignmentsOwnerRoleHistory
     [Column("entity_id")]
     public long EntityId { get; set; }
 
-    [Column("role_assignments", TypeName = "jsonb")]
+    [Column("role_assignments", TypeName = "text")]
     public string RoleAssignments { get; set; }
 }

@@ -416,7 +416,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .HasColumnName("method_name");
 
                     b.Property<string>("RoyaltyAmount")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("royalty_amount");
 
                     b.HasKey("Id");
@@ -735,7 +735,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .HasColumnName("key_role");
 
                     b.Property<string>("RoleAssignments")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("role_assignments");
 
                     b.HasKey("Id");
@@ -764,7 +764,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
 
                     b.Property<string>("RoleAssignments")
                         .IsRequired()
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("role_assignments");
 
                     b.HasKey("Id");
@@ -967,7 +967,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .HasColumnName("affected_global_entities");
 
                     b.Property<string>("BalanceChanges")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("balance_changes");
 
                     b.Property<DateTime>("CreatedTimestamp")
@@ -997,7 +997,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
 
                     b.Property<string>("ReceiptCostingParameters")
                         .IsRequired()
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_costing_parameters");
 
                     b.Property<string>("ReceiptErrorMessage")
@@ -1006,7 +1006,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
 
                     b.Property<string[]>("ReceiptEventEmitters")
                         .IsRequired()
-                        .HasColumnType("jsonb[]")
+                        .HasColumnType("text[]")
                         .HasColumnName("receipt_event_emitters");
 
                     b.Property<string[]>("ReceiptEventNames")
@@ -1040,29 +1040,29 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .HasColumnName("receipt_event_type_indexes");
 
                     b.Property<string>("ReceiptFeeDestination")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_fee_destination");
 
                     b.Property<string>("ReceiptFeeSource")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_fee_source");
 
                     b.Property<string>("ReceiptFeeSummary")
                         .IsRequired()
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_fee_summary");
 
                     b.Property<string>("ReceiptNextEpoch")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_next_epoch");
 
                     b.Property<string>("ReceiptOutput")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_output");
 
                     b.Property<string>("ReceiptStateUpdates")
                         .IsRequired()
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("receipt_state_updates");
 
                     b.Property<LedgerTransactionStatus>("ReceiptStatus")
@@ -1347,7 +1347,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("AuthTemplate")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("auth_template");
 
                     b.Property<bool?>("AuthTemplateIsLocked")
@@ -1356,7 +1356,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
 
                     b.Property<string>("Definition")
                         .IsRequired()
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("definition");
 
                     b.Property<List<long>>("DependantEntityIds")
@@ -1377,7 +1377,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .HasColumnName("package_entity_id");
 
                     b.Property<string>("RoyaltyConfig")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("royalty_config");
 
                     b.Property<bool?>("RoyaltyConfigIsLocked")
@@ -2549,7 +2549,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .HasColumnName("manifest_instructions");
 
                     b.Property<string>("Message")
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("message");
 
                     b.Property<string>("PayloadHash")
@@ -2690,7 +2690,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
 
                     b.Property<string>("JsonState")
                         .IsRequired()
-                        .HasColumnType("jsonb")
+                        .HasColumnType("text")
                         .HasColumnName("json_state");
 
                     b.ToTable("state_history");

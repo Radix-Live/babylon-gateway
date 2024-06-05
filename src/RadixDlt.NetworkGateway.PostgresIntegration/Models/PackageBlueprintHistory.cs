@@ -87,19 +87,19 @@ internal class PackageBlueprintHistory
     [Column("version")]
     public string Version { get; set; }
 
-    [Column("definition", TypeName = "jsonb")]
+    [Column("definition", TypeName = "text")]
     public string Definition { get; set; }
 
     [Column("dependant_entity_ids")]
     public List<long>? DependantEntityIds { get; set; }
 
-    [Column("auth_template", TypeName = "jsonb")]
+    [Column("auth_template", TypeName = "text")]
     public string? AuthTemplate { get; set; }
 
     [Column("auth_template_is_locked")]
     public bool? AuthTemplateIsLocked { get; set; }
 
-    [Column("royalty_config", TypeName = "jsonb")]
+    [Column("royalty_config", TypeName = "text")]
     public string? RoyaltyConfig { get; set; }
 
     [Column("royalty_config_is_locked")]

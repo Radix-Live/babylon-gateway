@@ -206,7 +206,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     from_state_version = table.Column<long>(type: "bigint", nullable: false),
                     entity_id = table.Column<long>(type: "bigint", nullable: false),
                     method_name = table.Column<string>(type: "text", nullable: false),
-                    royalty_amount = table.Column<string>(type: "jsonb", nullable: true),
+                    royalty_amount = table.Column<string>(type: "text", nullable: true),
                     is_locked = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -358,7 +358,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     entity_id = table.Column<long>(type: "bigint", nullable: false),
                     key_role = table.Column<string>(type: "text", nullable: false),
                     key_module = table.Column<ModuleId>(type: "module_id", nullable: false),
-                    role_assignments = table.Column<string>(type: "jsonb", nullable: true),
+                    role_assignments = table.Column<string>(type: "text", nullable: true),
                     is_deleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -374,7 +374,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     from_state_version = table.Column<long>(type: "bigint", nullable: false),
                     entity_id = table.Column<long>(type: "bigint", nullable: false),
-                    role_assignments = table.Column<string>(type: "jsonb", nullable: false)
+                    role_assignments = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -494,22 +494,22 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     created_timestamp = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     normalized_round_timestamp = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     receipt_status = table.Column<LedgerTransactionStatus>(type: "ledger_transaction_status", nullable: false),
-                    receipt_fee_summary = table.Column<string>(type: "jsonb", nullable: false),
-                    receipt_state_updates = table.Column<string>(type: "jsonb", nullable: false),
-                    receipt_costing_parameters = table.Column<string>(type: "jsonb", nullable: false),
-                    receipt_fee_source = table.Column<string>(type: "jsonb", nullable: true),
-                    receipt_fee_destination = table.Column<string>(type: "jsonb", nullable: true),
-                    receipt_next_epoch = table.Column<string>(type: "jsonb", nullable: true),
-                    receipt_output = table.Column<string>(type: "jsonb", nullable: true),
+                    receipt_fee_summary = table.Column<string>(type: "text", nullable: false),
+                    receipt_state_updates = table.Column<string>(type: "text", nullable: false),
+                    receipt_costing_parameters = table.Column<string>(type: "text", nullable: false),
+                    receipt_fee_source = table.Column<string>(type: "text", nullable: true),
+                    receipt_fee_destination = table.Column<string>(type: "text", nullable: true),
+                    receipt_next_epoch = table.Column<string>(type: "text", nullable: true),
+                    receipt_output = table.Column<string>(type: "text", nullable: true),
                     receipt_error_message = table.Column<string>(type: "text", nullable: true),
-                    receipt_event_emitters = table.Column<string[]>(type: "jsonb[]", nullable: false),
+                    receipt_event_emitters = table.Column<string[]>(type: "text[]", nullable: false),
                     receipt_event_names = table.Column<string[]>(type: "text[]", nullable: false),
                     receipt_event_sbors = table.Column<byte[][]>(type: "bytea[]", nullable: false),
                     receipt_event_schema_entity_ids = table.Column<long[]>(type: "bigint[]", nullable: false),
                     receipt_event_schema_hashes = table.Column<byte[][]>(type: "bytea[]", nullable: false),
                     receipt_event_type_indexes = table.Column<long[]>(type: "bigint[]", nullable: false),
                     receipt_event_sbor_type_kinds = table.Column<SborTypeKind[]>(type: "sbor_type_kind[]", nullable: false),
-                    balance_changes = table.Column<string>(type: "jsonb", nullable: true),
+                    balance_changes = table.Column<string>(type: "text", nullable: true),
                     transaction_tree_hash = table.Column<string>(type: "text", nullable: false),
                     receipt_tree_hash = table.Column<string>(type: "text", nullable: false),
                     state_tree_hash = table.Column<string>(type: "text", nullable: false),
@@ -517,7 +517,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     payload_hash = table.Column<string>(type: "text", nullable: true),
                     intent_hash = table.Column<string>(type: "text", nullable: true),
                     signed_intent_hash = table.Column<string>(type: "text", nullable: true),
-                    message = table.Column<string>(type: "jsonb", nullable: true),
+                    message = table.Column<string>(type: "text", nullable: true),
                     raw_payload = table.Column<byte[]>(type: "bytea", nullable: true),
                     manifest_instructions = table.Column<string>(type: "text", nullable: true),
                     manifest_classes = table.Column<LedgerTransactionManifestClass[]>(type: "ledger_transaction_manifest_class[]", nullable: true)
@@ -632,11 +632,11 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     package_entity_id = table.Column<long>(type: "bigint", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
                     version = table.Column<string>(type: "text", nullable: false),
-                    definition = table.Column<string>(type: "jsonb", nullable: false),
+                    definition = table.Column<string>(type: "text", nullable: false),
                     dependant_entity_ids = table.Column<List<long>>(type: "bigint[]", nullable: true),
-                    auth_template = table.Column<string>(type: "jsonb", nullable: true),
+                    auth_template = table.Column<string>(type: "text", nullable: true),
                     auth_template_is_locked = table.Column<bool>(type: "boolean", nullable: true),
-                    royalty_config = table.Column<string>(type: "jsonb", nullable: true),
+                    royalty_config = table.Column<string>(type: "text", nullable: true),
                     royalty_config_is_locked = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -765,7 +765,7 @@ namespace RadixDlt.NetworkGateway.PostgresIntegration.Migrations
                     from_state_version = table.Column<long>(type: "bigint", nullable: false),
                     entity_id = table.Column<long>(type: "bigint", nullable: false),
                     discriminator = table.Column<StateType>(type: "state_type", nullable: false),
-                    json_state = table.Column<string>(type: "jsonb", nullable: true),
+                    json_state = table.Column<string>(type: "text", nullable: true),
                     sbor_state = table.Column<byte[]>(type: "bytea", nullable: true),
                     schema_hash = table.Column<byte[]>(type: "bytea", nullable: true),
                     sbor_type_kind = table.Column<SborTypeKind>(type: "sbor_type_kind", nullable: true),

@@ -202,7 +202,7 @@ internal class EntityStateProcessor
             switch (e)
             {
                 case JsonStateHistory jsonStateHistory:
-                    await writer.WriteAsync(jsonStateHistory.JsonState, NpgsqlDbType.Jsonb, token);
+                    await writer.WriteAsync(jsonStateHistory.JsonState, NpgsqlDbType.Text, token);
                     await writer.WriteNullAsync(token);
                     await writer.WriteNullAsync(token);
                     await writer.WriteNullAsync(token);
