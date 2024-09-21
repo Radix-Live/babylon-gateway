@@ -251,17 +251,40 @@ internal class TransactionQuerier : ITransactionQuerier
 
         if (request.SearchCriteria.AffectedGlobalEntities.Any())
         {
-            foreach (var entityAddress in request.SearchCriteria.AffectedGlobalEntities)
+            if (request.SearchCriteria.AffectedGlobalEntitiesType == GatewayModel.StreamTransactionsRequest.AffectedGlobalEntitiesFilterTypeEnum.And)
             {
-                if (!entityAddressToId.TryGetValue(entityAddress, out var entityId))
+                foreach (var entityAddress in request.SearchCriteria.AffectedGlobalEntities)
                 {
-                    return TransactionPageWithoutTotal.Empty;
+                    if (!entityAddressToId.TryGetValue(entityAddress, out var entityId))
+                    {
+                        return TransactionPageWithoutTotal.Empty;
+                    }
+
+                    searchQuery = searchQuery
+                        .Join(_dbContext.LedgerTransactionMarkers, sv => sv, ltm => ltm.StateVersion, (sv, ltm) => ltm)
+                        .OfType<AffectedGlobalEntityTransactionMarker>()
+                        .Where(agetm => agetm.EntityId == entityId)
+                        .Where(agetm => agetm.StateVersion <= upperStateVersion && agetm.StateVersion >= (lowerStateVersion ?? agetm.StateVersion))
+                        .Select(agetm => agetm.StateVersion);
+                }
+            }
+            else
+            {
+                var entityIds = new HashSet<long>();
+                foreach (var entityAddress in request.SearchCriteria.AffectedGlobalEntities)
+                {
+                    if (!entityAddressToId.TryGetValue(entityAddress, out var entityId))
+                    {
+                        return TransactionPageWithoutTotal.Empty;
+                    }
+
+                    entityIds.Add(entityId);
                 }
 
                 searchQuery = searchQuery
                     .Join(_dbContext.LedgerTransactionMarkers, sv => sv, ltm => ltm.StateVersion, (sv, ltm) => ltm)
                     .OfType<AffectedGlobalEntityTransactionMarker>()
-                    .Where(agetm => agetm.EntityId == entityId)
+                    .Where(agetm => entityIds.Contains(agetm.EntityId))
                     .Where(agetm => agetm.StateVersion <= upperStateVersion && agetm.StateVersion >= (lowerStateVersion ?? agetm.StateVersion))
                     .Select(agetm => agetm.StateVersion);
             }

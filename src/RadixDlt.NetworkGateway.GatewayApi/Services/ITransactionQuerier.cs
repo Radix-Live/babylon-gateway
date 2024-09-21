@@ -67,6 +67,7 @@ using RadixDlt.NetworkGateway.Abstractions.Model;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AffectedGlobalEntitiesFilterTypeEnum = RadixDlt.NetworkGateway.GatewayApiSdk.Model.StreamTransactionsRequest.AffectedGlobalEntitiesFilterTypeEnum;
 using GatewayModel = RadixDlt.NetworkGateway.GatewayApiSdk.Model;
 
 namespace RadixDlt.NetworkGateway.GatewayApi.Services;
@@ -123,6 +124,8 @@ public class TransactionStreamPageRequestSearchCriteria
     public HashSet<EntityAddress> BadgesPresented { get; set; } = new();
 
     public HashSet<EntityAddress> AffectedGlobalEntities { get; set; } = new();
+
+    public AffectedGlobalEntitiesFilterTypeEnum AffectedGlobalEntitiesType { get; set; } = AffectedGlobalEntitiesFilterTypeEnum.And;
 
     public HashSet<EntityAddress> EventGlobalEmitters { get; set; } = new();
 
