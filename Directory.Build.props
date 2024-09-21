@@ -15,7 +15,7 @@
 
   <PropertyGroup>
     <VersionPrefix>1.9.2</VersionPrefix>
-    <VersionSuffix>develop</VersionSuffix>
+    <VersionSuffix>v1.9.2-L</VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup Condition="$(MSBuildProjectExtension) == '.csproj'">

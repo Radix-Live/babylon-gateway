@@ -2,6 +2,8 @@
 set -euo pipefail
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd "$SCRIPT_DIR"
+echo "cd $SCRIPT_DIR"
+export MSYS_NO_PATHCONV=1
 
 keystore_folder="$SCRIPT_DIR/../container-volumes/fullnode/"
 keystore_filename="keystore.ks"
