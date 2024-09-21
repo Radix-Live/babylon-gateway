@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: v1.7.2
+  version: v1.7.2-L
   title: Radix Gateway API - Babylon
   license:
     name: The Radix License, Version 1.0
@@ -43,8 +43,8 @@ info:
     The Gateway DB schema is not subject to any compatibility guarantees, and may be changed at any release. DB changes
     will be flagged in the release notes so clients doing custom DB integrations can prepare.
 servers:
-  - url: https://mainnet.radixdlt.com
-  - url: https://stokenet.radixdlt.com
+  - url: https://gateway.radix.live
+  - url: https://stokenet-gateway.radix.live
 x-tagGroups:
   - name: Overview
     tags:
@@ -3997,6 +3997,13 @@ components:
               type: array
               items:
                 $ref: "#/components/schemas/Address"
+            affected_global_entities_filter_type:
+              description: Whether the filter should require all addresses (AND) or any of them (OR) to be present in the transaction. Default - "And".
+              type: string
+              enum:
+                - And
+                - Or
+              default: "And"
             events_filter:
               description: Filters the transaction stream to transactions which emitted at least one event matching each filter (each filter can be satisfied by a different event). Currently *only* deposit and withdrawal events emitted by an internal vault entity are tracked. For the purpose of filtering, the emitter address is replaced by the global ancestor of the emitter, for example, the top-level account / component which contains the vault which emitted the event.
               type: array
